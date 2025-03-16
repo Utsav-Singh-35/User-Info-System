@@ -76,4 +76,4 @@ python manage.py runserver
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details. # User-Info-System
