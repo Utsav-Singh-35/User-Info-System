@@ -43,4 +43,10 @@ env/
 
 # System Files
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Environment variables
+.env.local
+.env.development
+.env.test
+.env.production 

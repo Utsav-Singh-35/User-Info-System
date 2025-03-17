@@ -38,17 +38,23 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Apply migrations:
+4. Create a .env file in the root directory:
+```bash
+cp .env.example .env
+```
+Then edit the .env file to set your own values, especially the SECRET_KEY.
+
+5. Apply migrations:
 ```bash
 python manage.py migrate
 ```
 
-5. Run the development server:
+6. Run the development server:
 ```bash
 python manage.py runserver
 ```
 
-6. Visit http://127.0.0.1:8000/ in your browser
+7. Visit http://127.0.0.1:8000/ in your browser
 
 ## Usage
 
@@ -76,4 +82,41 @@ python manage.py runserver
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. # User-Info-System
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Deployment on Render
+
+This project is configured for easy deployment on Render.com.
+
+### Steps to deploy:
+
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Use the following settings:
+   - **Name**: user-info-system (or your preferred name)
+   - **Environment**: Python
+   - **Build Command**: `./build.sh`
+   - **Start Command**: `cd form && gunicorn form.wsgi:application`
+
+4. Add the following environment variables in the Render dashboard:
+   - `DEBUG`: False
+   - `SECRET_KEY`: (generate a secure random key)
+   - `ALLOWED_HOSTS`: yourapp.onrender.com,localhost,127.0.0.1
+   - `RENDER`: true
+
+5. For database:
+   - Use the free PostgreSQL database provided by Render
+   - Add the `DATABASE_URL` environment variable (Render will do this automatically when you create a PostgreSQL instance)
+
+6. Deploy your application
+
+### Local Development vs Production
+
+For local development:
+- Set `DEBUG=True` in your .env file
+- Use SQLite database
+
+For production:
+- Set `DEBUG=False` in your .env file
+- Use PostgreSQL database
+- Ensure all security settings are enabled

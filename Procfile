@@ -1,0 +1,1 @@
+web: cd form && gunicorn form.wsgi:application 
