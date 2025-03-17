@@ -2,14 +2,14 @@
 # exit on error
 set -o errexit
 
+# Make build.sh executable
+chmod +x build.sh
+
 # Install dependencies
 pip install -r requirements.txt
 
-# Navigate to project directory
-cd form
-
 # Collect static files
-python manage.py collectstatic --no-input
+python form/manage.py collectstatic --no-input
 
 # Apply migrations
-python manage.py migrate 
+python form/manage.py migrate 

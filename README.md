@@ -96,7 +96,7 @@ This project is configured for easy deployment on Render.com.
    - **Name**: user-info-system (or your preferred name)
    - **Environment**: Python
    - **Build Command**: `./build.sh`
-   - **Start Command**: `cd form && gunicorn form.wsgi:application`
+   - **Start Command**: `gunicorn --pythonpath form form.wsgi`
 
 4. Add the following environment variables in the Render dashboard:
    - `DEBUG`: False

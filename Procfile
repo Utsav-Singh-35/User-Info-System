@@ -1,1 +1,1 @@
-web: cd form && gunicorn form.wsgi:application 
+web: gunicorn --pythonpath form form.wsgi 
